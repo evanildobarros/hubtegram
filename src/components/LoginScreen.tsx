@@ -14,15 +14,25 @@ interface LoginScreenProps {
 
 export default function LoginScreen({ onLogin, initialNameInput }: LoginScreenProps) {
   const [username, setUsername] = useState(initialNameInput || 'evanildo.barros');
-  const [password, setPassword] = useState('********');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+
+  const VALID_PASSWORD = 'tegram2026';
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!username.trim()) {
       setError('Por favor, informe seu email ou usuário.');
+      return;
+    }
+    if (!password.trim()) {
+      setError('Por favor, informe sua senha.');
+      return;
+    }
+    if (password !== VALID_PASSWORD) {
+      setError('Senha incorreta. Tente novamente.');
       return;
     }
     setIsLoading(true);

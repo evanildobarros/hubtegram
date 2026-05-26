@@ -39,26 +39,28 @@ export default function DashboardScreen({ user, course, esg, onNavigateToTab }: 
   const [activeCameraIdx, setActiveCameraIdx] = useState(0);
   const currentCamera = TERMINAL_STATUS_ITEMS[activeCameraIdx];
 
-  // Chat/Fred Assistante State
+  // Chat/Tegram Assistante State
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: 'welcome-msg',
       sender: 'assistant',
-      text: `Olá, ${user.name.split(' ')[0]}! Aqui é o assistente Fred. Como posso apoiar você e o monitoramento das nossas metas operacionais, normas de segurança (NR-15/16/29) e indicadores ESG hoje?`,
+      text: `Olá, ${user.name.split(' ')[0]}! Aqui é o Tegram Assistente. Como posso apoiar você e o monitoramento das nossas metas operacionais, normas de segurança (NR-15/16/29) e indicadores ESG hoje?`,
       timestamp: '15:15'
     }
   ]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
-  // Auto Scroll chat to bottom
-  const scrollToBottom = () => {
-    scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
+  // Auto Scroll chat to bottom (only within the chat container, not the whole page)
+  const scrollChatToBottom = () => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
   };
   
   useEffect(() => {
-    scrollToBottom();
+    scrollChatToBottom();
   }, [messages, isTyping]);
 
   // Handle Send Chat to Server-Proxy
@@ -175,7 +177,7 @@ export default function DashboardScreen({ user, course, esg, onNavigateToTab }: 
                 <GraduationCap className="w-4.5 h-4.5" />
               </div>
               <div className="text-left">
-                <h3 className="text-[10px] font-bold text-[#AAAAAA] tracking-widest uppercase leading-none">PRÓXIMA AULA (CEMP)</h3>
+                <h3 className="text-[10px] font-bold text-[#AAAAAA] tracking-widest uppercase leading-none">PRÓXIMA AULA (EAD)</h3>
                 <span className="text-[12px] text-[#888888] font-medium block mt-1">Treinamento Regulamentar</span>
               </div>
             </div>
@@ -328,7 +330,7 @@ export default function DashboardScreen({ user, course, esg, onNavigateToTab }: 
           </div>
         </motion.div>
 
-        {/* CARD 4: Intelligent Assistant "Assistente Fred" Chatbox - Clean Minimalist Conversational Panel */}
+        {/* CARD 4: Intelligent Assistant "Tegram Assistente" Chatbox - Clean Minimalist Conversational Panel */}
         <div className="bg-white rounded-[24px] border border-[#EEEEEE] overflow-hidden mb-3 text-left flex flex-col h-[360px] shadow-none">
           {/* Assistant header bar */}
           <div className="p-4 bg-white border-b border-[#EEEEEE] flex items-center justify-between">
@@ -340,7 +342,7 @@ export default function DashboardScreen({ user, course, esg, onNavigateToTab }: 
                 <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-white" />
               </div>
               <div className="flex flex-col text-left">
-                <span className="text-xs font-bold text-[#1A1A1A] tracking-tight">Fred Assistente</span>
+                <span className="text-xs font-bold text-[#1A1A1A] tracking-tight">Tegram Assistente</span>
                 <span className="text-[9px] text-[#888888] font-mono flex items-center uppercase tracking-wider">
                   <Sparkles className="w-2.5 h-2.5 mr-0.5 text-[#1A1A1A]" />
                   Gemini 3.5 AI
@@ -351,7 +353,7 @@ export default function DashboardScreen({ user, course, esg, onNavigateToTab }: 
           </div>
 
           {/* Messages conversational overflow panel */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-[#FAF9FA]" style={{ contentVisibility: 'auto' }}>
+          <div ref={chatContainerRef} className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-[#FAF9FA]" style={{ contentVisibility: 'auto' }}>
             <AnimatePresence initial={false}>
               {messages.map((msg) => (
                 <div 
@@ -379,12 +381,11 @@ export default function DashboardScreen({ user, course, esg, onNavigateToTab }: 
                 <div className="flex justify-start">
                   <div className="bg-white text-[#1A1A1A] border border-[#EEEEEE] rounded-[18px] rounded-tl-xs p-3 max-w-[80%] flex items-center space-x-2">
                     <Loader2 className="w-3.5 h-3.5 text-[#1A1A1A] animate-spin" />
-                    <span className="text-[12px] font-medium text-[#AAAAAA]">Fred está formulando...</span>
+                    <span className="text-[12px] font-medium text-[#AAAAAA]">Tegram está formulando...</span>
                   </div>
                 </div>
               )}
             </AnimatePresence>
-            <div ref={scrollRef} />
           </div>
 
           {/* Message input formulary footer */}

@@ -68,6 +68,8 @@ export default function App() {
     });
     // Reset to dashboard upon fresh logs
     setActiveTab('dashboard');
+    // Scroll to top so the user sees the header first
+    window.scrollTo(0, 0);
   };
 
   const handleLogout = () => {
@@ -177,7 +179,7 @@ export default function App() {
           </span>
         </button>
 
-        {/* TAB INDEX 2: LMS (CEMP Classroom) */}
+        {/* TAB INDEX 2: LMS (EAD Classroom) */}
         <button
           onClick={() => setActiveTab('lms')}
           className="flex flex-col items-center justify-center relative flex-1 cursor-pointer"

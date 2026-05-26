@@ -65,7 +65,7 @@ export default function LMSScreen() {
   // Navigation: Sub-tabs within SSO & Contractor Hub
   const [activeSubTab, setActiveSubTab] = useState<'cemp' | 'mobilization' | 'matrix' | 'nrs'>('matrix');
 
-  // LMS / CEMP original states
+  // LMS / EAD original states
   const [courses] = useState<LMSCourse[]>(INITIAL_COURSES);
   const [selectedCourse, setSelectedCourse] = useState<LMSCourse>(INITIAL_COURSES[0]);
   const [isPlayingVideo, setIsPlayingVideo] = useState(false);
@@ -267,7 +267,7 @@ export default function LMSScreen() {
               activeSubTab === 'cemp' ? 'bg-white text-black border border-[#EEEEEE] shadow-sm' : 'text-[#888888] hover:text-[#1A1A1A]'
             }`}
           >
-            <span>CEMP Aulas</span>
+            <span>EAD Aulas</span>
           </button>
           <button 
             onClick={() => { setActiveSubTab('nrs'); setIsPlayingVideo(false); setActiveQuiz(false); }}
@@ -607,7 +607,7 @@ export default function LMSScreen() {
           )}
 
           {/* ====================================================================== */}
-          {/* SUBTAB 3: CEMP REGULATORY EDUCATION AND TRAINING (Preserves original code!) */}
+          {/* SUBTAB 3: EAD REGULATORY EDUCATION AND TRAINING (Preserves original code!) */}
           {/* ====================================================================== */}
           {activeSubTab === 'cemp' && (
             <motion.div
@@ -618,7 +618,7 @@ export default function LMSScreen() {
               className="space-y-6"
             >
               <div>
-                <span className="text-[11px] text-[#888888] font-bold uppercase tracking-widest block mb-1">Módulos Escola CEMP</span>
+                <span className="text-[11px] text-[#888888] font-bold uppercase tracking-widest block mb-1">Módulos Escola EAD</span>
                 <h2 className="text-2xl font-light text-[#1A1A1A] tracking-tight">
                   Vídeo-aulas e <span className="font-bold">Avaliações</span>
                 </h2>
@@ -729,7 +729,7 @@ export default function LMSScreen() {
                     <div className="flex flex-col items-center justify-center text-center space-y-1.5 py-4">
                       <Video className="w-7 h-7 text-white animate-bounce" />
                       <span className="text-[11.5px] text-white/95 font-medium font-sans">
-                        Demonstração Técnica Regulamentar CEMP
+                        Demonstração Técnica Regulamentar EAD
                       </span>
                     </div>
 
@@ -748,11 +748,11 @@ export default function LMSScreen() {
                     <div className="bg-[#FAF9FA] border border-[#EEEEEE] p-4 rounded-xl flex items-start space-x-3.5">
                       <FileText className="w-5 h-5 text-[#888888] shrink-0 mt-0.5" />
                       <div className="text-left">
-                        <h4 className="text-[12px] font-bold text-[#1A1A1A]">Apostila CEMP (PDF)</h4>
+                        <h4 className="text-[12px] font-bold text-[#1A1A1A]">Apostila EAD (PDF)</h4>
                         <p className="text-[11px] text-[#888888] mt-1 leading-normal">Instruções de segurança para frentes de movimentação.</p>
                         <button 
                           type="button"
-                          onClick={() => alert("Apostila do curso baixada com sucesso (CEMP-Class.pdf)")}
+                          onClick={() => alert("Apostila do curso baixada com sucesso (EAD-Class.pdf)")}
                           className="text-[10px] text-[#1A1A1A] font-bold underline hover:no-underline mt-1.5 block uppercase tracking-wider font-mono"
                         >
                           Baixar Anexo
@@ -771,7 +771,7 @@ export default function LMSScreen() {
                       className="w-full py-3.5 bg-neutral-100 hover:bg-[#FAF9FA] text-[#1A1A1A] border border-[#EEEEEE] font-bold text-xs tracking-widest uppercase rounded-xl flex items-center justify-center space-x-2 transition-colors cursor-pointer"
                     >
                       <Award className="w-4 h-4 text-[#1A1A1A]" />
-                      <span>Iniciar Simulado CEMP</span>
+                      <span>Iniciar Simulado EAD</span>
                     </button>
                   </div>
                 ) : (
