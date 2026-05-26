@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  /* Clean Minimalism Color Palette */
+  --color-tegram-primary: #1A1A1A;
+  --color-tegram-primary-container: #333333;
+  --color-tegram-secondary: #888888;
+  --color-tegram-secondary-dark: #1A1A1A;
+  --color-tegram-bg: #FDFDFD;
+  --color-tegram-surface: #FFFFFF;
+  --color-tegram-neutral: #EEEEEE;
+  --color-tegram-text: #1A1A1A;
+  --color-tegram-text-variant: #888888;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-tegram-bg);
+  color: var(--color-tegram-text);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar adjustment for minimalism */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #EEEEEE;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #BBBBBB;
+}
+
