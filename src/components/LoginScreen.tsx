@@ -10,9 +10,10 @@ import { motion } from 'motion/react';
 interface LoginScreenProps {
   onLogin: (name: string) => void;
   initialNameInput: string;
+  onBackToLanding?: () => void;
 }
 
-export default function LoginScreen({ onLogin, initialNameInput }: LoginScreenProps) {
+export default function LoginScreen({ onLogin, initialNameInput, onBackToLanding }: LoginScreenProps) {
   const [username, setUsername] = useState(initialNameInput || 'evanildo.barros');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -182,7 +183,7 @@ export default function LoginScreen({ onLogin, initialNameInput }: LoginScreenPr
           </button>
         </form>
 
-        <div className="mt-8 pt-6 border-t border-[#EEEEEE] text-center">
+        <div className="mt-8 pt-6 border-t border-[#EEEEEE] text-center space-y-3">
           <p className="text-[12px] text-[#888888]">
             Não possui conta?{" "}
             <button 
@@ -195,6 +196,15 @@ export default function LoginScreen({ onLogin, initialNameInput }: LoginScreenPr
               Solicitar Acesso
             </button>
           </p>
+          {onBackToLanding && (
+            <button 
+              type="button"
+              className="text-[11px] font-semibold text-[#888888] hover:text-[#1A1A1A] hover:underline flex items-center justify-center gap-1 mx-auto"
+              onClick={onBackToLanding}
+            >
+              ← Voltar para o Portal
+            </button>
+          )}
         </div>
       </motion.div>
 
