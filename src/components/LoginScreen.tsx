@@ -20,9 +20,7 @@ export default function LoginScreen({ onLogin, initialNameInput, onBackToLanding
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const VALID_PASSWORD = 'tegram2026';
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!username.trim()) {
       setError('Por favor, informe seu email ou usuário.');
@@ -32,26 +30,32 @@ export default function LoginScreen({ onLogin, initialNameInput, onBackToLanding
       setError('Por favor, informe sua senha.');
       return;
     }
-    if (password !== VALID_PASSWORD) {
-      setError('Senha incorreta. Tente novamente.');
-      return;
-    }
+    
     setIsLoading(true);
     setError('');
 
-    // Simulate validation and login
-    setTimeout(() => {
-      setIsLoading(false);
-      // Map username to realistic human name if they used a common user format
-      let formattedName = "Evanildo de Jesus Campos Barros";
-      if (username !== 'evanildo.barros' && username.includes('.')) {
-        const parts = username.split('.');
-        formattedName = parts.map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(' ') + " (Operador)";
-      } else if (username !== 'evanildo.barros') {
-        formattedName = username;
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+
+      if (!response.ok) {
+        const errData = await response.json();
+        setError(errData.error || 'Credenciais inválidas.');
+        setIsLoading(false);
+        return;
       }
-      onLogin(formattedName);
-    }, 900);
+
+      const data = await response.json();
+      setIsLoading(false);
+      onLogin(data.name);
+    } catch (err) {
+      console.error(err);
+      setError('Falha de conexão com o servidor de autenticação.');
+      setIsLoading(false);
+    }
   };
 
   return (

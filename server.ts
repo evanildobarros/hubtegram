@@ -85,6 +85,26 @@ const getFallbackResponse = (message: string): string => {
 };
 
 // API routes FIRST
+app.post("/api/login", (req, res) => {
+  const { username, password } = req.body;
+  const securePassword = process.env.LOGIN_PASSWORD || "tegram2026";
+  
+  if (password === securePassword) {
+    // Map username to realistic human name
+    let formattedName = "Evanildo de Jesus Campos Barros";
+    if (username !== 'evanildo.barros' && username.includes('.')) {
+      const parts = username.split('.');
+      formattedName = parts.map((p: string) => p.charAt(0).toUpperCase() + p.slice(1)).join(' ') + " (Operador)";
+    } else if (username !== 'evanildo.barros') {
+      formattedName = username;
+    }
+    
+    return res.json({ success: true, name: formattedName });
+  } else {
+    return res.status(401).json({ success: false, error: "Senha incorreta. Tente novamente." });
+  }
+});
+
 app.post("/api/chat", async (req, res) => {
   const { message, chatHistory = [] } = req.body;
   if (!message) {
