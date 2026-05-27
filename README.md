@@ -2,6 +2,7 @@
   <img width="1200" alt="HubTegram Banner" src="assets/hubtegram_banner.png" />
 </div>
 
+<!-- theme switcher integrated -->
 # HubTegram — TEGRAM OS
 
 O **HubTegram** (TEGRAM OS) é uma suíte integrada de operações portuárias de alta fidelidade desenvolvida para o **TEGRAM Itaqui** (Terminal de Grãos do Maranhão), localizado em São Luís. 
