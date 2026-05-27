@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>HUBTEGRAM OS | Controle de Campo Web</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#001831",
+                        "operational-blue": "#002D54",
+                        "surface": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "surface-container-low": "#f3f3f3",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-surface": "#1a1c1c",
+                        "on-surface-variant": "#43474e",
+                        "outline": "#73777f",
+                        "outline-variant": "#c3c6cf",
+                        "status-success": "#26A269",
+                        "status-warning": "#E5A50A",
+                        "status-critical": "#C01C28",
+                        "border-muted": "#EEEEEE",
+                    },
+                    "fontFamily": {
+                        "body": ["Inter"],
+                        "mono": ["JetBrains Mono"],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f9f9f9; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e2e2; border-radius: 10px; }
+        .map-bg {
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBHdfyRn00ZngC1tlnuPfsj7ao4e6kXAUEeSyJqs9e1YLmlFNBJ4Y7_cqT8Xu9Ztsfl72F8WDBJdGcsHtsEwjR66ciPsAS35St7E-wwXFR5FiQXyhWciUI87PmbZjn2HLBQMZfi-1QoocNDF56o8ljwGiH5-Wv8gkkX9Kwg2sPhSrqp64qCP13NH0vEpVS3K-mdCijpezQ3kHLhwop_mW9X3yyw_TDrJsTVEKGyBc-dRQNmN-kfCX6HdV7AYqEZq8zr532YXH4QQSOT');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="text-on-surface flex h-screen overflow-hidden">
+
+    <!-- SideNav -->
+    <aside class="w-[280px] bg-surface-container border-r border-outline-variant flex flex-col h-full py-4 z-50">
+        <div class="px-6 py-4 flex items-center gap-3 mb-6">
+            <div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+                <span class="material-symbols-outlined text-white text-[20px]">anchor</span>
+            </div>
+            <div class="flex flex-col">
+                <h1 class="text-sm font-bold text-primary leading-none">TEGRAM OS</h1>
+                <p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Port Operations Suite</p>
+            </div>
+        </div>
+        
+        <nav class="flex-1 px-2 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all">
+                <span class="material-symbols-outlined text-[20px]">dashboard</span>
+                <span class="text-sm font-medium">Dashboard</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all">
+                <span class="material-symbols-outlined text-[20px]">badge</span>
+                <span class="text-sm font-medium">Mobilização</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-operational-blue text-white rounded-lg shadow-sm transition-all">
+                <span class="material-symbols-outlined text-[20px]">map</span>
+                <span class="text-sm font-medium">Field Operations</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all">
+                <span class="material-symbols-outlined text-[20px]">analytics</span>
+                <span class="text-sm font-medium">ESG Panel</span>
+            </a>
+        </nav>
+
+        <div class="px-2 border-t border-outline-variant pt-4 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all">
+                <span class="material-symbols-outlined text-[20px]">settings</span>
+                <span class="text-sm font-medium">Configurações</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col relative overflow-hidden">
+        <!-- TopBar -->
+        <header class="h-16 bg-white border-b border-outline-variant flex justify-between items-center px-8 z-40">
+            <div class="flex items-center gap-4">
+                <h2 class="text-lg font-bold text-primary tracking-tight">CONTROLE DE CAMPO WEB</h2>
+                <div class="h-4 w-px bg-outline-variant"></div>
+                <span class="text-xs text-on-surface-variant">Monitoramento de Presença em Tempo Real</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2 px-3 py-1 bg-surface-container-low border border-outline-variant rounded-full">
+                    <span class="material-symbols-outlined text-status-success text-[14px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                    <span class="text-[11px] font-medium text-on-surface-variant uppercase tracking-wider">GPS Sync Active</span>
+                </div>
+                <div class="flex items-center gap-3 pl-4 border-l border-outline-variant">
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-primary">evanildo.barros</p>
+                        <p class="text-[10px] text-on-surface-variant uppercase">Supervisor Nível 4</p>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2BvmGSXfhZMit5Tta1VM8tSuivUrC9qqHxMthj_k_xLwJ4uk_-9vh_tKtO1HuUavb4vS0LNgj2I6ZOrg2fswCGC6HpwvWaNyaGD65p95dpGbIIG7hhvU_dNTIoQ82_xOJilW_lCov4c30jnOlRY3IEcRhuOXcARL84ib0OJeGjvIoGpvoHq37CrcAt-xE7PB0KfQhaNUOE4_WRoif9xOLEGknLg5MMo8wgnSzamxceIIGmuNCH9ya6YwVG0H_gQWnTghD-VWwLIMt" alt="User" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="flex-1 flex relative overflow-hidden">
+            <!-- Left: Map Area -->
+            <div class="flex-1 relative map-bg overflow-hidden">
+                <div class="absolute inset-0 bg-white/20 backdrop-blur-[1px] pointer-events-none"></div>
+                
+                <!-- Map Markers (Mock) -->
+                <div class="absolute top-1/3 left-1/4 group cursor-pointer">
+                    <div class="w-6 h-6 bg-operational-blue border-2 border-white rounded-full shadow-lg animate-bounce"></div>
+                    <div class="absolute left-8 top-0 hidden group-hover:block bg-white p-2 rounded shadow-md border border-outline-variant w-48">
+                        <p class="text-xs font-bold text-primary">Ricardo Silva</p>
+                        <p class="text-[10px] text-on-surface-variant">Terminal T3 - Vistoria de Carga</p>
+                        <div class="mt-2 h-12 w-full bg-surface-container-low rounded overflow-hidden">
+                            <img src="https://via.placeholder.com/150" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute top-1/2 left-1/2 group cursor-pointer">
+                    <div class="w-6 h-6 bg-status-warning border-2 border-white rounded-full shadow-lg"></div>
+                    <div class="absolute left-8 top-0 hidden group-hover:block bg-white p-2 rounded shadow-md border border-outline-variant w-48">
+                        <p class="text-xs font-bold text-primary">Marcos Oliveira</p>
+                        <p class="text-[10px] text-on-surface-variant">Berço 03 - Manutenção</p>
+                    </div>
+                </div>
+                <div class="absolute bottom-1/4 right-1/3 group cursor-pointer">
+                    <div class="w-6 h-6 bg-status-critical border-2 border-white rounded-full shadow-lg"></div>
+                    <div class="absolute left-8 top-0 hidden group-hover:block bg-white p-2 rounded shadow-md border border-outline-variant w-48">
+                        <p class="text-xs font-bold text-primary">Ana Paula</p>
+                        <p class="text-[10px] text-on-surface-variant">Silos A4 - Não Conformidade</p>
+                    </div>
+                </div>
+
+                <!-- Map Controls -->
+                <div class="absolute bottom-8 left-8 flex flex-col gap-2">
+                    <button class="w-10 h-10 bg-white border border-outline-variant rounded-lg shadow-sm flex items-center justify-center text-primary hover:bg-surface-container-highest transition-all">
+                        <span class="material-symbols-outlined text-sm">add</span>
+                    </button>
+                    <button class="w-10 h-10 bg-white border border-outline-variant rounded-lg shadow-sm flex items-center justify-center text-primary hover:bg-surface-container-highest transition-all">
+                        <span class="material-symbols-outlined text-sm">remove</span>
+                    </button>
+                    <button class="w-10 h-10 bg-white border border-outline-variant rounded-lg shadow-sm flex items-center justify-center text-primary hover:bg-surface-container-highest transition-all">
+                        <span class="material-symbols-outlined text-sm">my_location</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right: Real-time Feed -->
+            <div class="w-[450px] bg-white border-l border-outline-variant flex flex-col z-40 shadow-2xl">
+                <div class="p-6 border-b border-outline-variant bg-surface-container-low">
+                    <h3 class="text-base font-bold text-primary flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm">radar</span>
+                        Feed de Operações
+                    </h3>
+                    <p class="text-xs text-on-surface-variant">Registros de presença e evidências em tempo real.</p>
+                </div>
+                
+                <div class="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-6">
+                    <!-- Entry 1 -->
+                    <div class="bg-surface-container-low rounded-xl border border-outline-variant p-4 hover:border-operational-blue transition-all cursor-pointer group">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-operational-blue text-white flex items-center justify-center text-xs font-bold">RS</div>
+                                <div>
+                                    <p class="text-xs font-bold text-primary">Ricardo Silva</p>
+                                    <p class="text-[10px] text-on-surface-variant">T3 - NORTE</p>
+                                </div>
+                            </div>
+                            <span class="text-[10px] font-mono text-on-surface-variant">10:15:02</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-2 py-0.5 rounded bg-status-success/10 text-status-success text-[9px] font-bold uppercase border border-status-success/20">Check-in OK</span>
+                            <span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant text-[9px] font-bold uppercase">Vistoria de Carga</span>
+                        </div>
+                        <div class="flex gap-2 overflow-x-auto pb-2">
+                            <div class="w-16 h-16 bg-surface-container-high rounded-md border border-outline-variant overflow-hidden">
+                                <img src="https://via.placeholder.com/100" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                            </div>
+                            <div class="w-16 h-16 bg-surface-container-high rounded-md border border-outline-variant overflow-hidden">
+                                <img src="https://via.placeholder.com/100" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                            </div>
+                            <div class="w-16 h-16 bg-surface-container-high rounded-md border border-outline-variant flex items-center justify-center text-outline">
+                                <span class="material-symbols-outlined text-sm">add_photo_alternate</span>
+                            </div>
+                        </div>
+                        <div class="mt-3 pt-3 border-t border-outline-variant/50 flex justify-between items-center">
+                            <p class="text-[11px] text-on-surface-variant italic">"Carga de ferro-gusa em conformidade..."</p>
+                            <button class="text-operational-blue text-xs font-bold hover:underline">Ver Detalhes</button>
+                        </div>
+                    </div>
+
+                    <!-- Entry 2 -->
+                    <div class="bg-surface-container-low rounded-xl border border-outline-variant p-4 hover:border-status-critical transition-all cursor-pointer group">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-status-critical text-white flex items-center justify-center text-xs font-bold">AP</div>
+                                <div>
+                                    <p class="text-xs font-bold text-primary">Ana Paula</p>
+                                    <p class="text-[10px] text-on-surface-variant">Silos A4 - Corredor</p>
+                                </div>
+                            </div>
+                            <span class="text-[10px] font-mono text-on-surface-variant">09:42:11</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-2 py-0.5 rounded bg-status-critical/10 text-status-critical text-[9px] font-bold uppercase border border-status-critical/20">Alerta: NC</span>
+                            <span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant text-[9px] font-bold uppercase">Sinalização</span>
+                        </div>
+                        <div class="flex gap-2 overflow-x-auto pb-2">
+                            <div class="w-16 h-16 bg-surface-container-high rounded-md border border-outline-variant overflow-hidden">
+                                <img src="https://via.placeholder.com/100" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                            </div>
+                        </div>
+                        <div class="mt-3 pt-3 border-t border-outline-variant/50 flex justify-between items-center">
+                            <p class="text-[11px] text-status-critical font-medium italic">"Placa de sinalização NR-16 danificada..."</p>
+                            <button class="text-status-critical text-xs font-bold hover:underline">Abrir Plano de Ação</button>
+                        </div>
+                    </div>
+
+                    <!-- Entry 3 -->
+                    <div class="bg-surface-container-low rounded-xl border border-outline-variant p-4 hover:border-operational-blue transition-all cursor-pointer group">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-status-warning text-white flex items-center justify-center text-xs font-bold">MO</div>
+                                <div>
+                                    <p class="text-xs font-bold text-primary">Marcos Oliveira</p>
+                                    <p class="text-[10px] text-on-surface-variant">Berço 03 - Posto Combustível</p>
+                                </div>
+                            </div>
+                            <span class="text-[10px] font-mono text-on-surface-variant">08:30:55</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-2 py-0.5 rounded bg-status-warning/10 text-status-warning text-[9px] font-bold uppercase border border-status-warning/20">Aguardando</span>
+                            <span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant text-[9px] font-bold uppercase">Manutenção Preventiva</span>
+                        </div>
+                        <div class="mt-3 pt-3 border-t border-outline-variant/50 flex justify-between items-center">
+                            <p class="text-[11px] text-on-surface-variant italic">"Aguardando liberação de área..."</p>
+                            <button class="text-operational-blue text-xs font-bold hover:underline">Acompanhar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6 border-t border-outline-variant bg-surface-container-low space-y-3">
+                    <button class="w-full py-3 bg-operational-blue text-white text-xs font-bold rounded-lg hover:bg-primary transition-all shadow-sm uppercase tracking-widest">
+                        Sincronizar Dados de Campo
+                    </button>
+                    <p class="text-center text-[10px] text-on-surface-variant italic">Última sincronização: há 42 segundos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="h-12 bg-white border-t border-border-muted flex items-center justify-center gap-4 z-40">
+            <span class="text-[10px] font-bold text-primary uppercase tracking-widest">SHIELD PROTOCOL V7.2</span>
+            <span class="text-[10px] text-on-surface-variant uppercase tracking-tighter">© 2026 TEGRAM OS. COV-A SECURITY AUDITED.</span>
+        </footer>
+    </main>
+</body>
+</html>

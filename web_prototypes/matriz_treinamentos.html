@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>HUBTEGRAM OS | Matriz de Treinamentos</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#001831",
+                        "operational-blue": "#002D54",
+                        "surface": "#f9f9f9",
+                        "surface-container": "#eeeeee",
+                        "surface-container-low": "#f3f3f3",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-surface": "#1a1c1c",
+                        "on-surface-variant": "#43474e",
+                        "outline": "#73777f",
+                        "outline-variant": "#c3c6cf",
+                        "status-success": "#26A269",
+                        "status-warning": "#E5A50A",
+                        "status-critical": "#C01C28",
+                        "border-muted": "#EEEEEE",
+                    },
+                    "fontFamily": {
+                        "body": ["Inter"],
+                        "mono": ["JetBrains Mono"],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f9f9f9; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e2e2; border-radius: 10px; }
+        .zebra-table tr:nth-child(even) { background-color: #fcfcfc; }
+    </style>
+</head>
+<body class="text-on-surface flex h-screen overflow-hidden">
+
+    <!-- SideNav -->
+    <aside class="w-[280px] bg-surface-container border-r border-outline-variant flex flex-col h-full py-4 z-50">
+        <div class="px-6 py-4 flex items-center gap-3 mb-6">
+            <div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+                <span class="material-symbols-outlined text-white text-[20px]">anchor</span>
+            </div>
+            <div class="flex flex-col">
+                <h1 class="text-sm font-bold text-primary leading-none">TEGRAM OS</h1>
+                <p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Port Operations Suite</p>
+            </div>
+        </div>
+        
+        <nav class="flex-1 px-2 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all">
+                <span class="material-symbols-outlined text-[20px]">dashboard</span>
+                <span class="text-sm font-medium">Dashboard</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all">
+                <span class="material-symbols-outlined text-[20px]">badge</span>
+                <span class="text-sm font-medium">Mobilização</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all">
+                <span class="material-symbols-outlined text-[20px]">map</span>
+                <span class="text-sm font-medium">Field Operations</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-operational-blue text-white rounded-lg shadow-sm transition-all">
+                <span class="material-symbols-outlined text-[20px]">school</span>
+                <span class="text-sm font-medium">Matriz de Treinamentos</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all">
+                <span class="material-symbols-outlined text-[20px]">analytics</span>
+                <span class="text-sm font-medium">ESG Panel</span>
+            </a>
+        </nav>
+
+        <div class="px-2 border-t border-outline-variant pt-4 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all">
+                <span class="material-symbols-outlined text-[20px]">settings</span>
+                <span class="text-sm font-medium">Configurações</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col relative overflow-hidden">
+        <!-- TopBar -->
+        <header class="h-16 bg-white border-b border-outline-variant flex justify-between items-center px-8 z-40">
+            <div class="flex items-center gap-4">
+                <h2 class="text-lg font-bold text-primary tracking-tight">MATRIZ DE TREINAMENTOS & NRs</h2>
+                <div class="h-4 w-px bg-outline-variant"></div>
+                <span class="text-xs text-on-surface-variant">Controle de Capacitações e Vencimentos</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2 px-3 py-1 bg-surface-container-low border border-outline-variant rounded-full">
+                    <span class="material-symbols-outlined text-status-success text-[14px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                    <span class="text-[11px] font-medium text-on-surface-variant uppercase tracking-wider">Sync Completo</span>
+                </div>
+                <div class="flex items-center gap-3 pl-4 border-l border로-outline-variant">
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-primary">evanildo.barros</p>
+                        <p class="text-[10px] text-on-surface-variant uppercase">Administrador</p>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2BvmGSXfhZMit5Tta1VM8tSuivUrC9qqHxMthj_k_xLwJ4uk_-9vh_tKtO1HuUavb4vS0LNgj2I6ZOrg2fswCGC6HpwvWaNyaGD65p95dpGbIIG7hhvU_dNTIoQ82_xOJilW_lCov4c30jnOlRY3IEcRhuOXcARL84ib0OJeGjvIoGpvoHq37CrcAt-xE7PB0KfQhaNUOE4_WRoif9xOLEGknLg5MMo8wgnSzamxceIIGmuNCH9ya6YwVG0H_gQWnTghD-VWwLIMt" alt="User" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="flex-1 overflow-y-auto p-8 custom-scrollbar">
+            
+            <!-- Quick Filter Header -->
+            <div class="flex justify-between items-center mb-8">
+                <div class="flex gap-4">
+                    <button class="px-4 py-2 bg-operational-blue text-white text-xs font-bold rounded-lg shadow-sm uppercase tracking-widest">Todos os Treinamentos</button>
+                    <button class="px-4 py-2 bg-white border border-outline-variant text-on-surface-variant text-xs font-bold rounded-lg hover:bg-surface-container transition-all uppercase tracking-widest">Vencidos</button>
+                    <button class="px-4 py-2 bg-white border border-outline-variant text-on-surface-variant text-xs font-bold rounded-lg hover:bg-surface-container transition-all uppercase tracking-widest">Próximos 30 dias</button>
+                </div>
+                <button class="flex items-center gap-2 px-4 py-2 bg-status-success text-white text-xs font-bold rounded-lg shadow-sm hover:opacity-90 transition-all uppercase tracking-widest">
+                    <span class="material-symbols-outlined text-sm">add</span> Nova Certificação
+                </button>
+            </div>
+
+            <!-- Industrial Matrix Table -->
+            <div class="bg-white rounded-lg border border-border-muted shadow-sm overflow-hidden">
+                <div class="p-6 border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+                    <h3 class="text-base font-bold text-primary">Rastreabilidade de Capacitações (NRs & ASOs)</h3>
+                    <div class="flex gap-2">
+                        <span class="flex items-center gap-1 text-[10px] font-bold text-status-success uppercase"><span class="w-2 h-2 rounded-full bg-status-success"></span> Vigente</span>
+                        <span class="flex items-center gap-1 text-[10px] font-bold text-status-warning uppercase"><span class="w-2 h-2 rounded-full bg-status-warning"></span> Alerta</span>
+                        <span class="flex items-center gap-1 text-[10px] font-bold text-status-critical uppercase"><span class="w-2 h-2 rounded-full bg-status-critical"></span> Vencido</span>
+                    </div>
+                </div>
+                
+                <table class="w-full text-left zebra-table">
+                    <thead class="bg-surface-container text-on-surface-variant text-[11px] font-bold uppercase tracking-wider border-b border-outline-variant">
+                        <tr class="border-b border-outline-variant">
+                            <th class="px-6 py-4">Profissional</th>
+                            <th class="px-6 py-4">Empresa</th>
+                            <th class="px-6 py-4 text-center">NR-10 (Eletr.)</th>
+                            <th class="px-6 py-4 text-center">NR-35 (Alt.)</th>
+                            <th class="px-6 py-4 text-center">NR-18 (Const.)</th>
+                            <th class="px-6 py-4 text-center">ASO (Saúde)</th>
+                            <th class="px-6 py-4 text-right">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm divide-y divide-border-muted">
+                        <!-- Row 1 -->
+                        <tr class="hover:bg-surface-subtle transition-all">
+                            <td class="px-6 py-4 font-medium text-primary">Ricardo Silva <br><span class="text-[10px] text-on-surface-variant">Técnico</span></td>
+                            <td class="px-6 py-4 text-on-surface-variant text-xs">Engenharia Portuária</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2 py-0.5 rounded bg-status-success/10 text-status-success text-[10px] font-bold border border-status-success/20">OK</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2 py-0.5 rounded bg-status-success/10 text-status-success text-[10px] font-bold border border-status-success/20">OK</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2 py-0.5 rounded bg-status-warning/10 text-status-warning text-[10px] font-bold border border-status-warning/20">ALERTA</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2 py-0.5 rounded bg-status-success/10 text-status-success text-[10px] font-bold border border-status-success/20">OK</span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="p-1.5 bg-surface-container border border-outline-variant rounded hover:bg-surface-container-high transition-all">
+                                    <span class="material-symbols-outlined text-sm text-primary">visibility</span>
+                                </button>
+                            </button>
+                            </td>
+                        </tr>
+                        <!-- Row 2 -->
+                        <tr class="hover:bg-surface-subtle transition-all">
+                            <td class="px-6 py-4 font-medium text-primary">Marcos Oliveira <br><span class="text-[10px] text-on-surface-variant">Operador</span></td>
+                            <td class="px-6 py-4 text-on-surface-variant text-xs">Logística Global</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2 py-0.5 rounded bg-status-success/10 text-status-success text-[10px] font-bold border border-status-success/20">OK</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2 py-0.5 rounded bg-status-critical/10 text-status-critical text-[10px] font-bold border border-status-critical/20">VENCIDO</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2 py-0.5 rounded bg-status-success/10 text-status-success text-[10px] font-bold border border-status-success/20">OK</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2 py-0.5 rounded bg-status-success/10 text-status-success text-[10px] font-bold border border-status-success/20">OK</span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="p-1.5 bg-surface-container border border-outline-variant rounded hover:bg-surface-container-high transition-all">
+                                    <span class="material-symbols-outlined text-sm text-primary">visibility</span>
+                                </button>
+                            </button>
+                            </td>
+                        </tr>
+                        <!-- Row 3 -->
+                        <tr class="hover:bg-surface-subtle transition-all">
+                            <td class="px-6 py-4 font-medium text-primary">Ana Paula <br><span class="text-[10px] text-on-surface-variant">Auditora</span></td>
+                            <td class="px-6 py-4 text-on-surface-s variant text-xs">Sistemas de Segurança</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2 py-0.5 rounded bg-status-success/10 text-status-success text-[10px] font-bold border border-status-success/20">OK</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2 py-0.5 rounded bg-status-success/10 text-status-success text-[10px] font-bold border border-status-success/20">OK</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2 py-0.5 rounded bg-status-critical/10 text-status-critical text-[10px] font-bold border border-status-critical/20">VENCIDO</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2 py-0.5 rounded bg-status-critical/10 text-status-critical text-[10px] font-bold border border-status-critical/20">VENCIDO</span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="p-1.5 bg-surface-container border border-outline-variant rounded hover:bg-surface-container-high transition-all">
+                                    <span class="material-symbols-outlined text-sm text-primary">visibility</span>
+                                </button>
+                            </button>
+                            </td>
+                        </tr>
+                        <!-- Row 4 -->
+                        <tr class="hover:bg-surface-subtle transition-all">
+                            <td class="px-6 py-4 font-medium text-primary">João Pereira <br><span class="text-[10px] text-on-surface-variant">Eletricista</span></td>
+                            <td class="px-6 py-4 text-on-surface-variant text-xs">Manutenção Industrial</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2 py-0.5 rounded bg-status-success/10 text-status-success text-[10px] font-bold border border-status-success/20">OK</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2 py-0.5 rounded bg-status-success/10 text-status-success text-[10px] font-bold border border-status-success/20">OK</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2 py-0.5 rounded bg-status-success/10 text-status-success text-[10px] font-bold border border-status-success/20">OK</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2 py-0.5 rounded bg-status-success/10 text-status-success text-[10px] font-bold border border-status-success/20">OK</span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="p-1.5 bg-surface-container border border-outline-variant rounded hover:bg-surface-container-high transition-all">
+                                    <span class="material-symbols-outlined text-sm text-primary">visibility</span>
+                                </button>
+                            </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="p-4 border-t border-outline-variant bg-surface-container-low flex justify-between items-center">
+                    <span class="text-xs text-on-surface-variant font-medium">Exibindo 4 de 182 profissionais monitorados</span>
+                    <div class="flex gap-2">
+                        <button class="px-3 py-1 border border-outline-variant rounded text-xs hover:bg-white transition-all">Anterior</button>
+                        <button class="px-3 py-1 bg-operational-blue text-white rounded text-xs">1</button>
+                        <button class="px-3 py-1 border border-outline-variant rounded text-xs hover:bg-white transition-all">2</button>
+                        <button class="px-3 py-1 border border-outline-variant rounded text-xs hover:bg-white transition-all">3</button>
+                        <button class="px-3 py-1 border border-outline-variant rounded text-xs hover:bg-white transition-all">Próxima</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="h-12 bg-white border-t border-border-muted flex items-center justify-center gap-4 z-40">
+            <span class="text-[10px] font-bold text-primary uppercase tracking-widest">SHIELD PROTOCOL V7.2</span>
+            <span class="text-[10px] text-on-surface-variant uppercase tracking-tighter">© 2026 TEGRAM OS. COV-A SECURITY AUDITED.</p>
+        </footer>
+    </main>
+</body>
+</html>
