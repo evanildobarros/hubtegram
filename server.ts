@@ -17,25 +17,49 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-// Initialize Gemini safely to avoid app crash if key is missing
+// Initialize Gemini safely — Vertex AI (primary) with API Key fallback
 let ai: GoogleGenAI | null = null;
 const initGemini = () => {
   if (!ai) {
-    const key = process.env.GEMINI_API_KEY;
-    if (key && key !== "MY_GEMINI_API_KEY" && key.trim() !== "") {
+    const project = process.env.GOOGLE_CLOUD_PROJECT;
+    const location = process.env.GOOGLE_CLOUD_LOCATION || "us-central1";
+    const useVertexAI = process.env.GOOGLE_GENAI_USE_VERTEXAI === "true";
+    const apiKey = process.env.GEMINI_API_KEY;
+
+    // Strategy 1: Vertex AI (uses Application Default Credentials)
+    if (useVertexAI && project && project !== "SEU_PROJECT_ID" && project.trim() !== "") {
       try {
         ai = new GoogleGenAI({
-          apiKey: key,
+          vertexai: true,
+          project: project,
+          location: location,
+        });
+        console.log(`Google GenAI SDK initialized via Vertex AI (project: ${project}, location: ${location}).`);
+      } catch (err) {
+        console.error("Failed to initialize Vertex AI:", err);
+        ai = null;
+      }
+    }
+
+    // Strategy 2: Fallback to API Key
+    if (!ai && apiKey && apiKey !== "MY_GEMINI_API_KEY" && apiKey.trim() !== "") {
+      try {
+        ai = new GoogleGenAI({
+          apiKey: apiKey,
           httpOptions: {
             headers: {
               'User-Agent': 'aistudio-build',
             }
           }
         });
-        console.log("Google GenAI SDK initialized successfully.");
+        console.log("Google GenAI SDK initialized via API Key (fallback).");
       } catch (err) {
-        console.error("Failed to initialize Google GenAI SDK:", err);
+        console.error("Failed to initialize Google GenAI SDK via API Key:", err);
       }
+    }
+
+    if (!ai) {
+      console.warn("No Gemini credentials configured. Chat will use simulated fallback responses.");
     }
   }
   return ai;
@@ -146,7 +170,14 @@ app.post("/api/chat", async (req, res) => {
 
 // Serve health status
 app.get("/api/health", (req, res) => {
-  res.json({ status: "ok", geminiConfigured: !!process.env.GEMINI_API_KEY });
+  const useVertexAI = process.env.GOOGLE_GENAI_USE_VERTEXAI === "true";
+  const hasProject = !!process.env.GOOGLE_CLOUD_PROJECT;
+  const hasApiKey = !!process.env.GEMINI_API_KEY;
+  res.json({ 
+    status: "ok", 
+    aiMode: useVertexAI && hasProject ? "vertex_ai" : hasApiKey ? "api_key" : "fallback",
+    geminiConfigured: !!ai 
+  });
 });
 
 // Configure Vite or Serve static resources based on environment

@@ -17,7 +17,7 @@ O sistema foi desenhado de forma responsiva com foco em usabilidade móvel e no 
 
 ### 1. Cockpit Central (Dashboard)
 * **Painel Principal**: Visão geral de status das correias transportadoras, moegas e câmeras de monitoramento ao vivo.
-* **Tegram Assistente**: Um assistente virtual conversacional baseado em Inteligência Artificial (**Gemini 3.5 Flash**) altamente contextualizado para as operações do TEGRAM, segurança do trabalho (NR-15, NR-16, NR-29, NR-35) e apoio rápido para tomada de decisão no porto.
+* **Tegram Assistente**: Um assistente virtual conversacional baseado em Inteligência Artificial (**Gemini 3.5 Flash via Vertex AI**) altamente contextualizado para as operações do TEGRAM, segurança do trabalho (NR-15, NR-16, NR-29, NR-35) e apoio rápido para tomada de decisão no porto.
 
 ### 2. Gestão de SSO, Terceiros e EAD
 * **Validação de Terceirizados**: Pré-cadastro digital de funcionários contratados, validação de ASOs (Atestados de Saúde Ocupacional) e certificados.
@@ -41,7 +41,7 @@ O HubTegram é uma aplicação moderna baseada em componentes minimalistas e alt
 
 * **Frontend**: React 19, TypeScript, Vite 6, Tailwind CSS v4, Motion (animações e micro-interações).
 * **Backend**: Node.js + Express (atuando como servidor local de arquivos e proxy de rotas de IA).
-* **Inteligência Artificial**: SDK oficial do Google GenAI (`@google/genai`) conectado ao Gemini API.
+* **Inteligência Artificial**: SDK oficial do Google GenAI (`@google/genai`) conectado ao **Vertex AI** (com fallback para API Key).
 
 ---
 
@@ -49,7 +49,8 @@ O HubTegram é uma aplicação moderna baseada em componentes minimalistas e alt
 
 ### Pré-requisitos
 * Node.js (versão 18 ou superior)
-* Chave de API do Gemini (opcional - fallback simulado incluso)
+* Google Cloud SDK (`gcloud`) instalado e autenticado
+* Projeto Google Cloud com API Vertex AI habilitada
 
 ### Passos para Inicialização
 
@@ -58,17 +59,25 @@ O HubTegram é uma aplicação moderna baseada em componentes minimalistas e alt
    npm install
    ```
 
-2. **Configure o Ambiente**:
-   Copie o arquivo de exemplo `.env.example` para `.env` e defina suas credenciais:
+2. **Configure a Autenticação do Google Cloud**:
+   ```bash
+   gcloud auth application-default login
+   ```
+
+3. **Configure o Ambiente**:
+   Copie o arquivo de exemplo `.env.example` para `.env` e defina seu projeto:
    ```bash
    cp .env.example .env
    ```
-   Abra o arquivo `.env` e insira sua chave da API do Gemini:
+   Abra o arquivo `.env` e configure o Vertex AI:
    ```env
-   GEMINI_API_KEY="SUA_CHAVE_AQUI"
+   GOOGLE_CLOUD_PROJECT="seu-project-id"
+   GOOGLE_CLOUD_LOCATION="us-central1"
+   GOOGLE_GENAI_USE_VERTEXAI="true"
    ```
+   > **Nota**: Se preferir usar uma API Key do Gemini como alternativa, defina `GOOGLE_GENAI_USE_VERTEXAI="false"` e configure `GEMINI_API_KEY`.
 
-3. **Inicie o servidor de desenvolvimento**:
+4. **Inicie o servidor de desenvolvimento**:
    ```bash
    npm run dev
    ```
